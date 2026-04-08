@@ -1,0 +1,7 @@
+{
+  "name": "cloudops-env",
+  "version": "1.0.0",
+  "description": "Cloud engineering RL environment: IAM, FinOps, EC2",
+  "endpoints": ["/reset", "/step", "/close"],
+  "tasks": ["iam_security_review", "finops_cost_review", "ec2_right_sizing"]
+}

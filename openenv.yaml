@@ -1,0 +1,44 @@
+name: cloudops-env
+version: "1.0.0"
+description: "Cloud engineering RL environment simulating IAM security review, FinOps cost review, and EC2 right-sizing tasks for LLM agents."
+author: cloudops-team
+license: MIT
+
+inference: inference.py
+
+tasks:
+  - id: iam_security_review
+    description: "Audit IAM configuration and identify security issues."
+  - id: finops_cost_review
+    description: "Analyse AWS cost breakdown and produce optimisation report."
+  - id: ec2_right_sizing
+    description: "Evaluate EC2 utilisation metrics and recommend right-sized instance."
+
+endpoints:
+  reset:
+    method: POST
+    path: /reset
+    description: "Start a new episode. Accepts optional task_type in config."
+  step:
+    method: POST
+    path: /step
+    description: "Execute one tool action. Returns observation, reward, done, error."
+  state:
+    method: GET
+    path: /state
+    description: "Return current episode metadata without advancing the episode."
+  close:
+    method: POST
+    path: /close
+    description: "Close and clean up the current episode."
+  health:
+    method: GET
+    path: /health
+    description: "Liveness check."
+
+runtime:
+  language: python
+  version: "3.11"
+  port: 8000
+  max_steps: 10
+  reward_range: [0.0, 1.0]
