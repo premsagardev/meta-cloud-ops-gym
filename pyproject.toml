@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloudops-env"
+version = "0.1.0"
+description = "OpenEnv-compatible CloudOps environment for Hugging Face Spaces deployment"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi==0.110.0",
+  "uvicorn[standard]==0.29.0",
+  "requests==2.31.0",
+  "openai==1.30.0",
+  "pydantic==2.0.0"
+]
+
+[tool.setuptools]
+py-modules = ["server", "inference"]
+
+[tool.setuptools.packages.find]
+include = ["env*"]
